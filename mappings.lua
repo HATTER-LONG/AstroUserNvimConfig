@@ -18,6 +18,10 @@ return {
     --   desc = "Previous buffer",
     -- },
 
+    -- Base
+    L = { "$", desc = "Jump end of line" },
+    H = { "^", desc = "Jump end of line" },
+
     -- mappings seen under group name "Buffer"
     ["<leader>bD"] = {
       function()
@@ -27,11 +31,14 @@ return {
       end,
       desc = "Pick to close",
     },
-    -- tables with the `name` key will be registered with which-key if it's installed
-    -- this is useful for naming menus
-    ["<leader>b"] = { name = "Buffers" },
-    -- quick save
-    -- ["<C-s>"] = { ":w!<cr>", desc = "Save File" },  -- change description but the same command
+  },
+  v = {
+    -- Base
+    L = { "$", desc = "Jump end of line" },
+    H = { "^", desc = "Jump end of line" },
+    [">"] = { ">gv", desc = "Increase indent" },
+    ["<"] = { "<gv", desc = "Increase indent" },
+    ["p"] = { "pgvy", desc = "Better past" },
   },
   t = {
     -- setting a mapping to false will disable it
