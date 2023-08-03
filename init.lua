@@ -18,7 +18,8 @@ return {
   },
 
   -- Set colorscheme to use
-  colorscheme = "astrodark",
+  -- colorscheme = "astrodark",
+  colorscheme = "catppuccin",
 
   -- Diagnostics configuration (for vim.diagnostics.config({...})) when diagnostics are on
   diagnostics = {
@@ -51,6 +52,33 @@ return {
     -- enable servers that you already have installed without mason
     servers = {
       -- "pyright"
+    },
+    setup_handlers = {
+      function(lsp_name, opts)
+        local ok, custom_handler = pcall(require, "user.servers." .. lsp_name)
+        if not ok then
+          -- Default to use factory config for server(s) that doesn't include a spec
+          require("lspconfig")[lsp_name].setup(opts)
+          return
+        elseif type(custom_handler) == "function" then
+          --- Case where language server requires its own setup
+          --- Make sure to call require("lspconfig")[lsp_name].setup() in the function
+          --- See `clangd.lua` for example.
+          custom_handler(opts)
+        elseif type(custom_handler) == "table" then
+          require("lspconfig")[lsp_name].setup(vim.tbl_deep_extend("force", opts, custom_handler))
+        else
+          vim.notify(
+            string.format(
+              "Failed to setup [%s].\n\nServer definition under `completion/servers` must return\neither a fun(opts) or a table (got '%s' instead)",
+              lsp_name,
+              type(custom_handler)
+            ),
+            vim.log.levels.ERROR,
+            { title = "nvim-lspconfig" }
+          )
+        end
+      end,
     },
   },
 

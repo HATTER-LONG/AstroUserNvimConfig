@@ -22,15 +22,17 @@ return {
     L = { "$", desc = "Jump end of line" },
     H = { "^", desc = "Jump end of line" },
 
-    -- mappings seen under group name "Buffer"
-    ["<leader>bD"] = {
-      function()
-        require("astronvim.utils.status").heirline.buffer_picker(
-          function(bufnr) require("astronvim.utils.buffer").close(bufnr) end
-        )
-      end,
-      desc = "Pick to close",
-    },
+    ["<leader>bn"] = { "<cmd>Neotree buffers toggle<cr>", desc = "Toggle buffers" },
+
+    -- Hop
+    ["<leader>w"] = { "<Cmd>HopWord<CR>", desc = "jump: Goto word" },
+    ["<leader>j"] = { "<Cmd>HopLine<CR>", desc = "jump: Goto line" },
+    ["<leader>k"] = { "<Cmd>HopLine<CR>", desc = "jump: Goto line" },
+    ["<leader>c"] = { "<Cmd>HopChar1<CR>", desc = "jump: Goto one char" },
+    ["<leader>cc"] = { "<Cmd>HopChar2<CR>", desc = "jump: Goto two chars" },
+
+    -- suda
+    ["<C-x>s"] = { "<Cmd>SudaWrite<CR>", desc = "Suda write" },
   },
   v = {
     -- Base
@@ -39,6 +41,13 @@ return {
     [">"] = { ">gv", desc = "Increase indent" },
     ["<"] = { "<gv", desc = "Increase indent" },
     ["p"] = { "pgvy", desc = "Better past" },
+
+    -- Hop
+    ["<leader>w"] = { "<Cmd>HopWord<CR>", desc = "jump: Goto word" },
+    ["<leader>j"] = { "<Cmd>HopLine<CR>", desc = "jump: Goto line" },
+    ["<leader>k"] = { "<Cmd>HopLine<CR>", desc = "jump: Goto line" },
+    ["<leader>c"] = { "<Cmd>HopChar1<CR>", desc = "jump: Goto one char" },
+    ["<leader>cc"] = { "<Cmd>HopChar2<CR>", desc = "jump: Goto two chars" },
   },
   t = {
     -- setting a mapping to false will disable it
