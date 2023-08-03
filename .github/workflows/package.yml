@@ -18,19 +18,22 @@ jobs:
     permissions:
       contents: write
     steps:
-      - uses: actions/checkout@v3
-        with:
-          repository: 'AstroNvim/AstroNvim'
-          path: '${HOME}/.config/nvim'
-      - uses: actions/checkout@v3
-        with:
-          path: '${HOME}/.config/nvim/lua/user'
+      # - uses: actions/checkout@v3
+      #   with:
+      #     repository: 'AstroNvim/AstroNvim'
+      #     path: '${HOME}/.config/nvim'
+      # - uses: actions/checkout@v3
+      #   with:
+      #     path: '${HOME}/.config/nvim/lua/user'
       - uses: rhysd/action-setup-vim@v1
         with:
           neovim: true
       - name: Run 
         timeout-minutes: 10
         run: |
+          /usr/bin/git config --global --add safe.directory /home/runner/
+          /usr/bin/git clone --depth 1 https://github.com/AstroNvim/AstroNvim.git ~/.config/nvim
+          /usr/bin/git clone --depth 1 https://github.com/HATTER-LONG/AstroUserNvimConfig.git ~/.config/nvim/lua/user
           nvim +qa
           # nvim --headless "+Lazy! update" +qa
           cd ${HOME}/.config
