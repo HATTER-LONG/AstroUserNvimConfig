@@ -32,7 +32,7 @@ jobs:
         timeout-minutes: 10
         run: |
           nvim +qa
-          nvim --headless "+Lazy! update" +qa
+          # nvim --headless "+Lazy! update" +qa
           cd ${HOME}/.config
           tar -cvzf AstroNvimDots.tar.gz ./nvim ${HOME}/.local/share/nvim ${HOME}/.local/state/nvim 
       - uses: actions/upload-artifact@v3
