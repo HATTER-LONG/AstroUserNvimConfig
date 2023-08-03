@@ -31,6 +31,7 @@ jobs:
       - name: Run 
         timeout-minutes: 10
         run: |
+          nvim +qa
           nvim --headless "+Lazy! update" +qa
           cd ${HOME}/.config
           tar -cvzf AstroNvimDots.tar.gz ./nvim ${HOME}/.local/share/nvim ${HOME}/.local/state/nvim 
