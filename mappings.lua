@@ -25,11 +25,11 @@ return {
 		["<leader>bn"] = { "<cmd>Neotree buffers toggle<cr>", desc = "Toggle buffers" },
 
 		-- Hop
-		["<leader>w"] = { "<Cmd>HopWord<CR>", desc = "jump: Goto word" },
-		["<leader>j"] = { "<Cmd>HopLine<CR>", desc = "jump: Goto line" },
-		["<leader>k"] = { "<Cmd>HopLine<CR>", desc = "jump: Goto line" },
-		["<leader>c"] = { "<Cmd>HopChar1<CR>", desc = "jump: Goto one char" },
-		["<leader>cc"] = { "<Cmd>HopChar2<CR>", desc = "jump: Goto two chars" },
+		["<leader>w"] = { "<Cmd>HopWordMW<CR>", desc = "jump: Goto word" },
+		["<leader>j"] = { "<Cmd>HopLineMW<CR>", desc = "jump: Goto line" },
+		["<leader>k"] = { "<Cmd>HopLineMW<CR>", desc = "jump: Goto line" },
+		["<leader>c"] = { "<Cmd>HopChar1MW<CR>", desc = "jump: Goto one char" },
+		["<leader>cc"] = { "<Cmd>HopChar2MW<CR>", desc = "jump: Goto two chars" },
 
 		-- suda
 		["<C-x>s"] = { "<Cmd>SudaWrite<CR>", desc = "Suda write" },
