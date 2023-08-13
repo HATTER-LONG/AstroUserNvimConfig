@@ -43,11 +43,11 @@ return {
 		["p"] = { "pgvy", desc = "Better past" },
 
 		-- Hop
-		["<leader>w"] = { "<Cmd>HopWord<CR>", desc = "jump: Goto word" },
-		["<leader>j"] = { "<Cmd>HopLine<CR>", desc = "jump: Goto line" },
-		["<leader>k"] = { "<Cmd>HopLine<CR>", desc = "jump: Goto line" },
-		["<leader>c"] = { "<Cmd>HopChar1<CR>", desc = "jump: Goto one char" },
-		["<leader>cc"] = { "<Cmd>HopChar2<CR>", desc = "jump: Goto two chars" },
+		["<leader>w"] = { "<Cmd>HopWord<CR>", desc = "jump: Goto word v" },
+		["<leader>j"] = { "<Cmd>HopLine<CR>", desc = "jump: Goto line v" },
+		["<leader>k"] = { "<Cmd>HopLine<CR>", desc = "jump: Goto line v" },
+		["<leader>c"] = { "<Cmd>HopChar1<CR>", desc = "jump: Goto one char v" },
+		["<leader>cc"] = { "<Cmd>HopChar2<CR>", desc = "jump: Goto two chars v" },
 	},
 	t = {
 		-- setting a mapping to false will disable it

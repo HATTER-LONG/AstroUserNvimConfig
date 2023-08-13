@@ -29,4 +29,44 @@ return {
 			},
 		},
 	},
+	{ import = "astrocommunity.editing-support.rainbow-delimiters-nvim" },
+	{
+		"rainbow-delimiters.nvim",
+		config = function()
+			local function init_strategy()
+				return function()
+					local errors = 200
+					vim.treesitter.get_parser():for_each_tree(function(lt)
+						if lt:root():has_error() and errors >= 0 then
+							errors = errors - 1
+						end
+					end)
+					if errors < 0 then
+						return nil
+					end
+					return require("rainbow-delimiters").strategy["global"]
+				end
+			end
+
+			vim.g.rainbow_delimiters = {
+				strategy = {
+					[""] = init_strategy(),
+				},
+				query = {
+					[""] = "rainbow-delimiters",
+					latex = "rainbow-blocks",
+					javascript = "rainbow-delimiters-react",
+				},
+				highlight = {
+					"RainbowDelimiterRed",
+					"RainbowDelimiterOrange",
+					"RainbowDelimiterYellow",
+					"RainbowDelimiterGreen",
+					"RainbowDelimiterBlue",
+					"RainbowDelimiterCyan",
+					"RainbowDelimiterViolet",
+				},
+			}
+		end,
+	},
 }
