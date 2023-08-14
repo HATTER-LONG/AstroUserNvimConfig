@@ -109,5 +109,11 @@ return {
 		--     ["~/%.config/foo/.*"] = "fooscript",
 		--   },
 		-- }
+		--
+		vim.api.nvim_create_autocmd("VimResized", {
+			callback = function()
+				vim.api.nvim_command([[tabdo wincmd =]])
+			end,
+		})
 	end,
 }

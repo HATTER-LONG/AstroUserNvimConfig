@@ -34,6 +34,11 @@ return {
 		-- suda
 		["<C-x>s"] = { "<Cmd>SudaWrite<CR>", desc = "Suda write" },
 	},
+	i = {
+		["<C-s>"] = { "<ESC><Cmd>w<CR>", desc = "save" },
+		["<C-j>"] = { "<Right>", desc = "right" },
+		["<C-k>"] = { "<Left>", desc = "left" },
+	},
 	v = {
 		-- Base
 		L = { "$", desc = "Jump end of line" },

@@ -5,7 +5,17 @@ return {
 	-- available plugins can be found at https://github.com/AstroNvim/astrocommunity
 
 	{ import = "astrocommunity.colorscheme.catppuccin" },
-	{ import = "astrocommunity.completion.copilot-lua-cmp" },
+	{
+		"catppuccin",
+		opts = {
+			dim_inactive = {
+				enabled = true, -- dims the background color of inactive window
+				shade = "dark",
+				percentage = 0.2, -- percentage of the shade to apply to the inactive window
+			},
+		},
+	},
+	{ import = "astrocommunity.completion.copilot-lua" },
 	{ import = "astrocommunity.utility.noice-nvim" },
 	{
 		"noice.nvim",
@@ -32,9 +42,10 @@ return {
 	{ import = "astrocommunity.editing-support.rainbow-delimiters-nvim" },
 	{
 		"rainbow-delimiters.nvim",
-		config = function()
-			local function init_strategy()
-				return function()
+		lazy = true,
+		opts = {
+			strategy = {
+				[""] = function()
 					local errors = 200
 					vim.treesitter.get_parser():for_each_tree(function(lt)
 						if lt:root():has_error() and errors >= 0 then
@@ -44,29 +55,25 @@ return {
 					if errors < 0 then
 						return nil
 					end
-					return require("rainbow-delimiters").strategy["global"]
-				end
-			end
-
-			vim.g.rainbow_delimiters = {
-				strategy = {
-					[""] = init_strategy(),
-				},
-				query = {
-					[""] = "rainbow-delimiters",
-					latex = "rainbow-blocks",
-					javascript = "rainbow-delimiters-react",
-				},
-				highlight = {
-					"RainbowDelimiterRed",
-					"RainbowDelimiterOrange",
-					"RainbowDelimiterYellow",
-					"RainbowDelimiterGreen",
-					"RainbowDelimiterBlue",
-					"RainbowDelimiterCyan",
-					"RainbowDelimiterViolet",
-				},
-			}
-		end,
+					return require("rainbow-delimiters").strategy["local"]
+				end,
+			},
+			query = {
+				[""] = "rainbow-delimiters",
+				latex = "rainbow-blocks",
+				javascript = "rainbow-delimiters-react",
+			},
+			highlight = {
+				"RainbowDelimiterRed",
+				"RainbowDelimiterOrange",
+				"RainbowDelimiterYellow",
+				"RainbowDelimiterGreen",
+				"RainbowDelimiterBlue",
+				"RainbowDelimiterCyan",
+				"RainbowDelimiterViolet",
+			},
+		},
 	},
+	{ import = "astrocommunity.pack.markdown" },
+	{ import = "astrocommunity.markdown-and-latex.markdown-preview-nvim" },
 }
