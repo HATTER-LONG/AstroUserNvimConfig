@@ -15,7 +15,7 @@ return {
 			},
 		},
 	},
-	{ import = "astrocommunity.completion.copilot-lua" },
+	-- { import = "astrocommunity.completion.copilot-lua" },
 	{ import = "astrocommunity.utility.noice-nvim" },
 	{
 		"noice.nvim",

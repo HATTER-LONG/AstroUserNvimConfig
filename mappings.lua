@@ -33,6 +33,9 @@ return {
 
 		-- suda
 		["<C-x>s"] = { "<Cmd>SudaWrite<CR>", desc = "Suda write" },
+
+		-- telescope
+		["<leader>as"] = { "<Cmd>Telescope lsp_dynamic_workspace_symbols<CR>", desc = "telescope: workspace symbols" },
 	},
 	i = {
 		["<C-s>"] = { "<ESC><Cmd>w<CR>", desc = "save" },

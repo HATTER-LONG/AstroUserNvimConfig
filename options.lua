@@ -4,7 +4,6 @@ return function(local_vim)
 	local_vim.g.mapleader = " "
 	local_vim.opt.whichwrap = vim.opt.whichwrap - { "b", "s" } -- removing option from list
 	local_vim.opt.shortmess = vim.opt.shortmess + { I = true } -- add to option list
-
 	if global.is_mac then
 		vim.g.clipboard = {
 			name = "macOS-clipboard",
