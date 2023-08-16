@@ -28,16 +28,16 @@ jobs:
       - uses: rhysd/action-setup-vim@v1
         with:
           neovim: true
-      - name: Run 
+      - name: Run
         timeout-minutes: 10
         run: |
           /usr/bin/git config --global --add safe.directory /home/runner/
           /usr/bin/git clone --depth 1 https://github.com/AstroNvim/AstroNvim.git ~/.config/nvim
           /usr/bin/git clone --depth 1 https://github.com/HATTER-LONG/AstroUserNvimConfig.git ~/.config/nvim/lua/user
-          nvim +qa
-          # nvim --headless "+Lazy! update" +qa
+          nvim --headless "+Lazy! update" +qa
+          nvim --headless "+TSUpdateSync" +qa 
           cd ${HOME}/.config
-          tar -cvzf AstroNvimDots.tar.gz ./nvim ${HOME}/.local/share/nvim ${HOME}/.local/state/nvim 
+          tar -cvzf AstroNvimDots.tar.gz ./nvim ${HOME}/.local/share/nvim ${HOME}/.local/state/nvim
       - uses: actions/upload-artifact@v3
         with:
           name: package
