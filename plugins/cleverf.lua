@@ -2,7 +2,7 @@ return {
 	{
 		"rhysd/clever-f.vim",
 		lazy = true,
-		event = { "CursorHold", "CursorHoldI" },
+		event = { "BufReadPost" },
 		config = function()
 			vim.api.nvim_set_hl(
 				0,

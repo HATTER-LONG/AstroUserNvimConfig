@@ -115,5 +115,43 @@ return {
 				vim.api.nvim_command([[tabdo wincmd =]])
 			end,
 		})
+
+		-- auto close some filetype with <q>
+		vim.api.nvim_create_autocmd("FileType", {
+			pattern = {
+				"qf",
+				"help",
+				"man",
+				"notify",
+				"nofile",
+				"lspinfo",
+				"terminal",
+				"prompt",
+				"toggleterm",
+				"copilot",
+				"startuptime",
+				"tsplayground",
+				"PlenaryTestPopup",
+			},
+			callback = function(event)
+				vim.bo[event.buf].buflisted = false
+				vim.api.nvim_buf_set_keymap(event.buf, "n", "q", "<CMD>close<CR>", { silent = true })
+			end,
+		})
+
+		vim.api.nvim_create_autocmd("FileType", {
+			pattern = {
+				"markdown",
+			},
+			callback = function()
+				vim.api.nvim_command([[set wrap]])
+			end,
+		})
+		-- vim.api.nvim_create_autocmd("VimResized", {
+		-- 	callback = function()
+		-- 		vim.api.nvim_command([[tabdo wincmd =]])
+		-- 	end,
+		-- })
+		-- 	{ "FileType", "", "set wrap" },
 	end,
 }

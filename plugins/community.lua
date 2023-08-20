@@ -13,6 +13,9 @@ return {
 				shade = "dark",
 				percentage = 0.2, -- percentage of the shade to apply to the inactive window
 			},
+			integrations = {
+				markdown = true,
+			},
 		},
 	},
 	-- { import = "astrocommunity.completion.copilot-lua" },
@@ -55,7 +58,7 @@ return {
 					if errors < 0 then
 						return nil
 					end
-					return require("rainbow-delimiters").strategy["local"]
+					return require("rainbow-delimiters").strategy["global"]
 				end,
 			},
 			query = {
@@ -74,6 +77,4 @@ return {
 			},
 		},
 	},
-	{ import = "astrocommunity.pack.markdown" },
-	{ import = "astrocommunity.markdown-and-latex.markdown-preview-nvim" },
 }

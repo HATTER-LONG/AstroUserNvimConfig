@@ -8,6 +8,8 @@ return {
 			"cpp",
 			"json",
 			"lua",
+			"markdown",
+			"markdown_inline",
 		})
 	end,
 }

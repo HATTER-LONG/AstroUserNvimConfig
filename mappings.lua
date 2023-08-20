@@ -60,5 +60,6 @@ return {
 	t = {
 		-- setting a mapping to false will disable it
 		-- ["<esc>"] = false,
+		["<C-q>"] = { "<Cmd>ToggleTerm<CR>", desc = "Terminal: Close terminal" },
 	},
 }
